@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="新遊戲專案"
+config/name="f"
+run/main_scene="res://fishing.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
