@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://oikkbux34b37"]
+
+[ext_resource type="Texture2D" uid="uid://bxirb2kielep4" path="res://Gemini_Generated_Image_sajaddsajaddsaja.png" id="1_0hol4"]
+[ext_resource type="Script" uid="uid://y5to65wanyw4" path="res://rod.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://ddd1cog76ktur" path="res://螢幕擷取畫面_2026-02-28_153450-removebg-preview.png" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://e2dim8ycuab6" path="res://hook-removebg-preview.png" id="2_epypp"]
+[ext_resource type="PackedScene" uid="uid://pok5p5kvidlv" path="res://fish.tscn" id="5_kdubu"]
+[ext_resource type="Script" uid="uid://dy0alapfcdrrm" path="res://fish_spawner.gd" id="6_d21ai"]
+[ext_resource type="Script" uid="uid://3xvot5gdi3wo" path="res://fish swimming.gd" id="6_rj586"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6r6c"]
+radius = 38.118237
+
+[node name="node 2d" type="Node2D" unique_id=2056781778]
+position = Vector2(-4, 4)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1043728336]
+offset_left = -40.0
+offset_top = -2.0
+offset_right = 1336.0
+offset_bottom = 766.0
+texture = ExtResource("1_0hol4")
+
+[node name="rod" type="Sprite2D" parent="." unique_id=394316088]
+position = Vector2(569, 90)
+scale = Vector2(0.45119527, 0.41398394)
+texture = ExtResource("2_0e48y")
+
+[node name="hook position" type="Node2D" parent="." unique_id=1120661383]
+position = Vector2(651, 216)
+
+[node name="hook" type="CharacterBody2D" parent="hook position" unique_id=1411307327]
+script = ExtResource("1_wtcfe")
+
+[node name="photo" type="Sprite2D" parent="hook position/hook" unique_id=249272290]
+position = Vector2(-2.9999762, -18.000002)
+scale = Vector2(0.3387822, 0.3247675)
+texture = ExtResource("2_epypp")
+
+[node name="Area2D" type="Area2D" parent="hook position/hook" unique_id=1960702846]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook position/hook/Area2D" unique_id=639701485]
+position = Vector2(-11, -18)
+shape = SubResource("CircleShape2D_q6r6c")
+
+[node name="fish" parent="." unique_id=1767778932 instance=ExtResource("5_kdubu")]
+position = Vector2(42, -4)
+script = ExtResource("6_rj586")
+
+[node name="FishSpawner" type="Node2D" parent="." unique_id=1197697318]
+script = ExtResource("6_d21ai")
+fish_scene = ExtResource("5_kdubu")
+
+[node name="Timer" type="Timer" parent="FishSpawner" unique_id=1689093359]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="FishSpawner/Timer" to="FishSpawner" method="_on_timer_timeout"]
