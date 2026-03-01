@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://pok5p5kvidlv"]
+
+[ext_resource type="Texture2D" uid="uid://by5482fk43bmj" path="res://tu_fhish-removebg-preview.png" id="1_xu20i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(183, 63.5)
+
+[node name="fish" type="Area2D" unique_id=1767778932 groups=["fish"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=720740923]
+position = Vector2(158, 422.99997)
+scale = Vector2(0.51437235, 0.4461034)
+texture = ExtResource("1_xu20i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=139235926]
+position = Vector2(174, 443)
+shape = SubResource("RectangleShape2D_q6r6c")
